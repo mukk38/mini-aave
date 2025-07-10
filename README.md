@@ -26,19 +26,38 @@ A minimal decentralized lending protocol inspired by [Aave](https://aave.com/). 
 ---
 
 ## 📁 Project Structure
-
+```
 mini-aave/
-├── contracts/ # Solidity smart contracts
-├── test/ # Hardhat tests
-├── scripts/ # Deployment & utility scripts
-├── frontend/ # React app (Vite or CRA)
-│ └── src/
-│ ├── abis/
-│ ├── components/
-│ └── App.js
-├── hardhat.config.js
+├── contracts/                  # Solidity smart contracts
+│   ├── LendingPool.sol         # Main lending logic (deposit, borrow, repay)
+│   ├── ERC20Mock.sol           # Mintable test token (DAI, USDC etc.)
+│   └── PriceOracle.sol         # Manually settable price oracle
+│
+├── test/                       # Hardhat unit tests
+│   └── LendingPool.test.js
+│
+├── scripts/                    # Deployment and utility scripts
+│   ├── deploy.js               # Deploy contracts locally or to testnet
+│   └── copyAbis.js             # Optional: copy compiled ABIs to frontend
+│
+├── frontend/                   # React + Ethers.js frontend
+│   └── src/
+│       ├── abis/               # Compiled contract ABIs
+│       │   ├── LendingPool.json
+│       │   └── ERC20Mock.json
+│       │
+│       ├── components/         # React components
+│       │   └── Dashboard.js    # Shows wallet info, deposits, borrows, LTV
+│       │
+│       ├── App.js              # Main entry point
+│       └── constants.js        # Contract addresses
+│
+├── .env                        # Environment variables (PRIVATE_KEY, INFURA_ID)
+├── .gitignore
+├── hardhat.config.js           # Hardhat configuration
+├── package.json
 └── README.md
-
+```
 ```bash
 
 ---
